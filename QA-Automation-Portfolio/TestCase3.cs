@@ -2,12 +2,12 @@
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace QuestGlobalTests
+namespace AutomationPortofolio
 {
-    public class TestCase2
+    public class TestCase3
     {
         [Test]
-        public async Task LoginUser_CorrectDetails()
+        public async Task LoginUser_IncorrectDetails()
         {
             //1. Launch Browser
             using var playwright = await Playwright.CreateAsync();
@@ -31,19 +31,13 @@ namespace QuestGlobalTests
 
             //6. Enter correct email and password
             await page.FillAsync("input[data-qa='login-email']", "dariatutunel26@gmail.com");
-            await page.FillAsync("input[data-qa='login-password']", "1234");
+            await page.FillAsync("input[data-qa='login-password']", "1234567");
 
             //7. Click 'login' button
             await page.ClickAsync("button[data-qa='login-button']");
 
             //8. Verify that 'Logged in as username' is visible
-            await Assertions.Expect(page.Locator("text=Logged in as")).ToBeVisibleAsync();
-
-            //9. Click 'Delete Account' button
-            await page.ClickAsync("a[href='/delete_account']");
-
-            //10. Verify that 'ACCOUNT DELETED!' is visible
-            await Assertions.Expect(page.Locator("b:has-text('Account Deleted!')")).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator("text=Your email or password is incorrect!")).ToBeVisibleAsync();
         }
     }
 }

@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System.Threading.Tasks;
 using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
-namespace QuestGlobalTests
+namespace AutomationPortofolio
 {
     public class TestCase21
     {

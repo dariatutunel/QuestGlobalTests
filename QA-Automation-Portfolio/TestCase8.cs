@@ -3,7 +3,7 @@ using Microsoft.VisualBasic;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace QuestGlobalTests
+namespace AutomationPortofolio
 {
     public class TestCase8
     {

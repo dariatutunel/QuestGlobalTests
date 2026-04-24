@@ -2,12 +2,12 @@
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace QuestGlobalTests
+namespace AutomationPortofolio
 {
-    public class TestCase3
+    public class TestCase4
     {
         [Test]
-        public async Task LoginUser_IncorrectDetails()
+        public async Task LogoutUser()
         {
             //1. Launch Browser
             using var playwright = await Playwright.CreateAsync();
@@ -31,13 +31,19 @@ namespace QuestGlobalTests
 
             //6. Enter correct email and password
             await page.FillAsync("input[data-qa='login-email']", "dariatutunel26@gmail.com");
-            await page.FillAsync("input[data-qa='login-password']", "1234567");
+            await page.FillAsync("input[data-qa='login-password']", "1234");
 
             //7. Click 'login' button
             await page.ClickAsync("button[data-qa='login-button']");
 
             //8. Verify that 'Logged in as username' is visible
-            await Assertions.Expect(page.Locator("text=Your email or password is incorrect!")).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator("text=Logged in as")).ToBeVisibleAsync();
+
+            //9. Click 'Logout' button
+            await page.ClickAsync("a[href='/logout']");
+
+            //10. Verify that user is navigated to login page
+            await Assertions.Expect(page).ToHaveURLAsync("https://automationexercise.com/login");
         }
     }
 }

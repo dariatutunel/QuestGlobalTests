@@ -2,12 +2,12 @@
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace QuestGlobalTests
+namespace AutomationPortofolio
 {
-    public class TestCase4
+    public class TestCase2
     {
         [Test]
-        public async Task LogoutUser()
+        public async Task LoginUser_CorrectDetails()
         {
             //1. Launch Browser
             using var playwright = await Playwright.CreateAsync();
@@ -39,11 +39,11 @@ namespace QuestGlobalTests
             //8. Verify that 'Logged in as username' is visible
             await Assertions.Expect(page.Locator("text=Logged in as")).ToBeVisibleAsync();
 
-            //9. Click 'Logout' button
-            await page.ClickAsync("a[href='/logout']");
+            //9. Click 'Delete Account' button
+            await page.ClickAsync("a[href='/delete_account']");
 
-            //10. Verify that user is navigated to login page
-            await Assertions.Expect(page).ToHaveURLAsync("https://automationexercise.com/login");
+            //10. Verify that 'ACCOUNT DELETED!' is visible
+            await Assertions.Expect(page.Locator("b:has-text('Account Deleted!')")).ToBeVisibleAsync();
         }
     }
 }

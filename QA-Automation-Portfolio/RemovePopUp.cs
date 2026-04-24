@@ -1,7 +1,7 @@
 ﻿using Microsoft.Playwright;
 using System.Threading.Tasks;
 
-namespace QuestGlobalTests
+namespace AutomationPortofolio
 {
     public class RemovePopUp // for GDPR consent banner
     {
